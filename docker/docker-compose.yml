@@ -14,7 +14,7 @@ services:
       args:
         IMAGE_BASE: $IMAGE_BASE
         NIXPKGS_URL: "https://github.com/nixos/nixpkgs"
-        NIXPKGS_BRANCH: "release-20.09"
+        NIXPKGS_BRANCH: "release-21.05"
         # Applies https://github.com/NixOS/nixpkgs/pull/82718 on top of the cloned tree.
         # Enable this if your build fails due to cptofs errors (including "cannot allocate memory")
         # or when having a filesystem resizing failure due to `resize2fs`.
@@ -46,4 +46,4 @@ services:
                          nixpkgs/nixos/default.nix && \
                        chmod u+w result/sd-image/* && sudo cp result/sd-image/* /build"]
     volumes:
-    - ..:/build
+      - ..:/build

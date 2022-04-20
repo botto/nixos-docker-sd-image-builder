@@ -9,7 +9,7 @@
   imports = [
     <nixpkgs/nixos/modules/profiles/base.nix>
     <nixpkgs/nixos/modules/profiles/installation-device.nix>
-    <nixpkgs/nixos/modules/installer/cd-dvd/sd-image.nix>
+    <nixpkgs/nixos/modules/installer/sd-card/sd-image.nix>
   ];
 
   boot.loader.grub.enable = false;
@@ -67,4 +67,11 @@
           fsType = "ext4";
       };
   };
+
+  nixpkgs.overlays = [
+  (final: super: {
+    makeModulesClosure = x:
+      super.makeModulesClosure (x // { allowMissing = true; });
+  })
+];
 }
